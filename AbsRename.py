@@ -1,6 +1,6 @@
 import os, shutil
 from glob import glob
-#os.chdir("A:\TV Shows\Mr.Robot\Mr.Robot Season 3\subs")
+os.chdir("A:\Anime\Ghost in the Shell Stand Alone Complex (2020)\Season 3")
 location = os.getcwd()
 
 def getSelfFolder(path):
@@ -17,13 +17,17 @@ def run():
         #print(src)
         if os.path.isfile:
             workname = filename.split(" ")#change it into what we want
+            maldname = ""
 
             #---------------------------------------------------->>>>
             # OPTION 1 ----- Adding an E for abosolute number episode ordering
             # This part adds the episode indicator on the number in the name of the file
             # Python starts list numbering at zero, so "[Judas] ANIME TITLE - 100" could be workname[4], or workname[-1]
             
-            #workname[5] = "E" + workname[5]
+            workname[7] = "S03E" + (str(1+count) if 1+count>=10 else "0" + str(1+count))
+
+            for w in workname:
+                maldname = maldname + w + " "
             
             #----------------------------------------------------<<<<
             
@@ -34,10 +38,8 @@ def run():
             
             #----------------------------------------------------<<<<
             
-            #for w in workname:
-                #maldname = maldname + w + " "
             dst = os.getcwd() + "\\" + maldname#define new filename
-            print(maldname)
+            print(workname)
             os.rename(src, dst) 
 
     #print("Adding characters...")
